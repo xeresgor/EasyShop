@@ -1,5 +1,9 @@
 using Microsoft.Extensions.Logging;
-// TODO: adicionar os usings de EasyShop.Data, EasyShop.Services e EasyShop.ViewModels conforme as classes forem criadas
+using EasyShop.Data;
+using EasyShop.Data.Interfaces;
+using EasyShop.Services;
+using EasyShop.Services.Interfaces;
+// TODO: usings de EasyShop.ViewModels (Elenara) e dos repositórios/serviços de Produto (Kauan)
 
 namespace EasyShop;
 
@@ -17,11 +21,11 @@ public static class MauiProgram
             });
 
         // ===== Acesso a Dados (Repositories) =====
-        // builder.Services.AddSingleton<ICustomerRepository, CustomerRepository>();   // Hygor (Etapa 2)
+        builder.Services.AddSingleton<ICustomerRepository, CustomerRepository>();   // Hygor (Etapa 2)
         // TODO (Kauan): builder.Services.AddSingleton<IProductRepository, ProductRepository>();
 
         // ===== Negócio (Services) =====
-        // builder.Services.AddSingleton<ICustomerService, CustomerService>();         // Hygor (Etapa 2)
+        builder.Services.AddSingleton<ICustomerService, CustomerService>();         // Hygor (Etapa 2)
         // TODO (Kauan): builder.Services.AddSingleton<IProductService, ProductService>();
 
         // ===== Apresentação (ViewModels) =====
