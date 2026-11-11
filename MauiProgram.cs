@@ -3,7 +3,8 @@ using EasyShop.Data;
 using EasyShop.Data.Interfaces;
 using EasyShop.Services;
 using EasyShop.Services.Interfaces;
-// TODO: usings de EasyShop.ViewModels (Elenara) e dos repositórios/serviços de Produto (Kauan)
+using EasyShop.ViewModels;
+using EasyShop.Views;
 
 namespace EasyShop;
 
@@ -21,19 +22,20 @@ public static class MauiProgram
             });
 
         // ===== Acesso a Dados (Repositories) =====
-        builder.Services.AddSingleton<ICustomerRepository, CustomerRepository>();   // Hygor (Etapa 2)
-        // TODO (Kauan): builder.Services.AddSingleton<IProductRepository, ProductRepository>();
+        // Singletons: uma conexão SQLite e uma instância LiteDatabase para o app inteiro.
+        builder.Services.AddSingleton<ICustomerRepository, CustomerRepository>();   // SQL   (SQLite)
+        builder.Services.AddSingleton<IProductRepository, ProductRepository>();     // NoSQL (LiteDB)
 
         // ===== Negócio (Services) =====
-        builder.Services.AddSingleton<ICustomerService, CustomerService>();         // Hygor (Etapa 2)
-        // TODO (Kauan): builder.Services.AddSingleton<IProductService, ProductService>();
+        builder.Services.AddSingleton<ICustomerService, CustomerService>();
+        builder.Services.AddSingleton<IProductService, ProductService>();
 
-        // ===== Apresentação (ViewModels) =====
-        // TODO (Elenara): builder.Services.AddSingleton<CustomersViewModel>();
-        // TODO (Elenara): builder.Services.AddSingleton<ProductsViewModel>();
-
-        // ===== Views =====
-        // TODO (Elenara): registrar as páginas (AddSingleton<CustomersPage>() etc.)
+        // ===== Apresentação (ViewModels e Views) =====
+        // As ViewModels só conhecem as interfaces de serviço — nunca SQLite ou LiteDB.
+        builder.Services.AddTransient<ProductsViewModel>();
+        builder.Services.AddTransient<CustomersViewModel>();
+        builder.Services.AddTransient<ProductsPage>();
+        builder.Services.AddTransient<CustomersPage>();
 
 #if DEBUG
         builder.Logging.AddDebug();

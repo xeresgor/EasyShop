@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<Shell
-    x:Class="EasyShop.AppShell"
-    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:EasyShop"
-    Title="EasyShop">
+<Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:views="clr-namespace:EasyShop.Views"
+       x:Class="EasyShop.AppShell"
+       Title="EasyShop"
+       Shell.BackgroundColor="{StaticResource Primary}"
+       Shell.TitleColor="White"
+       Shell.TabBarBackgroundColor="{StaticResource Primary}"
+       Shell.TabBarTitleColor="White"
+       Shell.TabBarUnselectedColor="#D0C4F5">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
-
+    <TabBar>
+        <ShellContent Title="Produtos"
+                      Route="products"
+                      ContentTemplate="{DataTemplate views:ProductsPage}" />
+        <ShellContent Title="Clientes"
+                      Route="customers"
+                      ContentTemplate="{DataTemplate views:CustomersPage}" />
+    </TabBar>
 </Shell>

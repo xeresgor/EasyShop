@@ -44,15 +44,24 @@ public class CustomerRepository : ICustomerRepository
     public async Task InsertAsync(Customer c)
     {
         var db = await GetConnectionAsync();
-        await db.InsertAsync(c);
+        try
+        {
+            await db.InsertAsync(c);
+        }
+        catch (SQLiteException ex) when (ex.Result == SQLite3.Result.Constraint)
+        {
+            // O índice UNIQUE da coluna Email recusou o registro.
+            throw new DuplicateEmailException(c.Email);
+        }
     }
 
     public async Task<bool> EmailExistsAsync(string email)
     {
         var db = await GetConnectionAsync();
-        var normalized = email.Trim().ToLower();
+        // Os e-mails já são gravados em minúsculas pelo serviço.
+        var normalized = email.Trim().ToLowerInvariant();
         var count = await db.Table<Customer>()
-                            .Where(c => c.Email.ToLower() == normalized)
+                            .Where(c => c.Email == normalized)
                             .CountAsync();
         return count > 0;
     }
