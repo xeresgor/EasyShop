@@ -6,52 +6,53 @@
              x:Class="EasyShop.Views.CustomersPage"
              x:DataType="vm:CustomersViewModel"
              Title="Clientes">
+    <Grid RowDefinitions="Auto,*">
 
-    <CollectionView ItemsSource="{Binding Customers}" Margin="12,0">
+        <!-- Formulário fora da lista: Entry dentro do Header da CollectionView perde o foco em algumas plataformas -->
+        <VerticalStackLayout Spacing="8" Padding="12,12,12,0">
+            <Label Text="Novo cliente" FontSize="20" FontAttributes="Bold" />
 
-        <CollectionView.Header>
-            <VerticalStackLayout Spacing="8" Padding="0,12">
-                <Label Text="Novo cliente" FontSize="20" FontAttributes="Bold" />
+            <Entry Placeholder="Nome completo" Text="{Binding Name}" />
+            <Entry Placeholder="E-mail" Keyboard="Email" Text="{Binding Email}" />
 
-                <Entry Placeholder="Nome completo" Text="{Binding Name}" />
-                <Entry Placeholder="E-mail" Keyboard="Email" Text="{Binding Email}" />
+            <Button Text="Salvar" Command="{Binding SaveCommand}"
+                    BackgroundColor="{StaticResource Primary}" TextColor="White" />
+            <ActivityIndicator IsRunning="{Binding SaveCommand.IsRunning}"
+                               IsVisible="{Binding SaveCommand.IsRunning}" />
 
-                <Button Text="Salvar" Command="{Binding SaveCommand}"
-                        BackgroundColor="{StaticResource Primary}" TextColor="White" />
-                <ActivityIndicator IsRunning="{Binding SaveCommand.IsRunning}"
-                                   IsVisible="{Binding SaveCommand.IsRunning}" />
+            <Label Text="{Binding Message}" IsVisible="{Binding HasMessage}"
+                   TextColor="SeaGreen" FontSize="13">
+                <Label.Triggers>
+                    <DataTrigger TargetType="Label" Binding="{Binding IsError}" Value="True">
+                        <Setter Property="TextColor" Value="Red" />
+                    </DataTrigger>
+                </Label.Triggers>
+            </Label>
 
-                <Label Text="{Binding Message}" IsVisible="{Binding HasMessage}"
-                       TextColor="SeaGreen" FontSize="13">
-                    <Label.Triggers>
-                        <DataTrigger TargetType="Label" Binding="{Binding IsError}" Value="True">
-                            <Setter Property="TextColor" Value="Red" />
-                        </DataTrigger>
-                    </Label.Triggers>
-                </Label>
+            <BoxView HeightRequest="1" Color="LightGray" Margin="0,6" />
+            <Label Text="Clientes cadastrados" FontSize="20" FontAttributes="Bold" />
+        </VerticalStackLayout>
 
-                <BoxView HeightRequest="1" Color="LightGray" Margin="0,6" />
-                <Label Text="Clientes cadastrados" FontSize="20" FontAttributes="Bold" />
-            </VerticalStackLayout>
-        </CollectionView.Header>
+        <CollectionView Grid.Row="1" ItemsSource="{Binding Customers}" Margin="12,0">
 
-        <CollectionView.EmptyView>
-            <Label Text="Nenhum cliente cadastrado." TextColor="Gray"
-                   HorizontalOptions="Center" Margin="0,20" />
-        </CollectionView.EmptyView>
+            <CollectionView.EmptyView>
+                <Label Text="Nenhum cliente cadastrado." TextColor="Gray"
+                       HorizontalOptions="Center" Margin="0,20" />
+            </CollectionView.EmptyView>
 
-        <CollectionView.ItemTemplate>
-            <DataTemplate x:DataType="models:Customer">
-                <Border Stroke="LightGray" StrokeThickness="1" Padding="12" Margin="0,4">
-                    <Border.StrokeShape>
-                        <RoundRectangle CornerRadius="10" />
-                    </Border.StrokeShape>
-                    <VerticalStackLayout Spacing="2">
-                        <Label Text="{Binding Name}" FontSize="16" FontAttributes="Bold" />
-                        <Label Text="{Binding Email}" TextColor="Gray" />
-                    </VerticalStackLayout>
-                </Border>
-            </DataTemplate>
-        </CollectionView.ItemTemplate>
-    </CollectionView>
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:Customer">
+                    <Border Stroke="LightGray" StrokeThickness="1" Padding="12" Margin="0,4">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="10" />
+                        </Border.StrokeShape>
+                        <VerticalStackLayout Spacing="2">
+                            <Label Text="{Binding Name}" FontSize="16" FontAttributes="Bold" />
+                            <Label Text="{Binding Email}" TextColor="Gray" />
+                        </VerticalStackLayout>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
 </ContentPage>
