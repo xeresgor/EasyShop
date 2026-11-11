@@ -2,11 +2,9 @@
 
 ## 👥 Integrantes
 
-| Nome completo | Responsabilidade |
-|---------------|------------------|
-| Hygor _[sobrenomes]_ | Banco SQL (SQLite) — repositório e serviço de Clientes |
-| Kauan _[sobrenomes]_ | Banco NoSQL (LiteDB) — repositório e serviço de Produtos |
-| Elenara _[sobrenomes]_ | Camada de Apresentação (Views/ViewModels) e README |
+- Hygor Ferreira Barbosa
+- Kauan Teodoro Lucio
+- Elenara Caroline Xavier
 
 ## 📖 Descrição do projeto
 

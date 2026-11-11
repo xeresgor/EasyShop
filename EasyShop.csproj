@@ -51,6 +51,8 @@
 		<!-- Acesso a Dados — SQL (Clientes) -->
 		<PackageReference Include="sqlite-net-pcl" Version="1.11.285" />
 		<PackageReference Include="SQLitePCLRaw.bundle_green" Version="2.1.11" />
+		<!-- Força a biblioteca nativa corrigida (GHSA-2m69-gcr7-jv3q afeta <= 2.1.11). -->
+		<PackageReference Include="SQLitePCLRaw.lib.e_sqlite3.android" Version="2.1.14" />
 
 		<!-- Acesso a Dados — NoSQL (Produtos) -->
 		<PackageReference Include="LiteDB" Version="5.0.21" />
