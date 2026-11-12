@@ -60,6 +60,15 @@ EasyShop/
 
 ## ▶️ Como rodar
 
+### Opção rápida — instalar o APK pronto (sem compilar)
+
+1. Baixe o **`EasyShop-v1.0.apk`** na página de
+   [Releases](https://github.com/xeresgor/EasyShop/releases/latest) do repositório.
+2. Abra um emulador Android (Android 7.0 ou superior) e **arraste o arquivo `.apk` para dentro da janela
+   do emulador** — ele instala sozinho. Em um celular Android, abra o arquivo e permita a instalação de
+   fontes desconhecidas.
+3. Abra o app **EasyShop** na lista de aplicativos.
+
 ### Opção 1 — Visual Studio 2026 (recomendado)
 
 1. Instale o [Visual Studio 2026 Community](https://visualstudio.microsoft.com/) com a carga de trabalho
