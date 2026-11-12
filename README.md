@@ -85,15 +85,17 @@ Os dois bancos são arquivos locais em `FileSystem.AppDataDirectory`:
 
 Para provar a persistência: cadastre clientes e produtos, feche o app por completo e abra de novo — as listas continuam lá.
 
-## 🖼️ Prints
+## 🖼️ Prints (emulador Android)
 
-| Aba Produtos | Aba Clientes |
+| Catálogo no NoSQL | Clientes no SQL |
 |:---:|:---:|
-| ![Produtos](docs/img/produtos.png) | ![Clientes](docs/img/clientes.png) |
+| <img src="docs/img/produtos.png" width="260" alt="Aba Produtos com três produtos de atributos diferentes"> | <img src="docs/img/clientes.png" width="260" alt="Aba Clientes barrando e-mail duplicado"> |
+| Camiseta, furadeira e notebook com atributos diferentes na mesma coleção | E-mail duplicado barrado pela regra de negócio e pelo índice `UNIQUE` |
 
-| Validação de erro | Lista atualizada após salvar |
+| Validação de negócio | Persistência |
 |:---:|:---:|
-| ![Erro](docs/img/erro.png) | ![Lista](docs/img/lista.png) |
+| <img src="docs/img/erro.png" width="260" alt="Erro de preço igual a zero"> | <img src="docs/img/persistencia.png" width="260" alt="Produtos continuam após fechar e reabrir o app"> |
+| Preço precisa ser maior que zero | Dados continuam lá depois de fechar o app por completo e abrir de novo |
 
 ## 🎥 Vídeo de demonstração
 

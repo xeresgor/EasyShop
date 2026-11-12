@@ -12,7 +12,8 @@
             <Label Text="Novo produto" FontSize="20" FontAttributes="Bold" />
 
             <Entry Placeholder="Nome do produto" Text="{Binding Name}" />
-            <Entry Placeholder="Preço (ex.: 1299,90)" Keyboard="Numeric" Text="{Binding PriceText}" />
+            <!-- Sem Keyboard="Numeric": no Android ele só aceita o separador decimal do idioma do aparelho e engolia a vírgula -->
+            <Entry Placeholder="Preço (ex.: 1299,90)" Text="{Binding PriceText}" />
             <Entry Placeholder="Atributos (opcional): cor=azul; tamanho=M"
                    Text="{Binding AttributesText}" />
 
