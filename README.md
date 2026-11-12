@@ -60,19 +60,40 @@ EasyShop/
 
 ## ▶️ Como rodar
 
-**Pré-requisitos**
-- [.NET 10 SDK](https://dotnet.microsoft.com/download/dotnet/10.0)
-- Workload do MAUI para Android: `dotnet workload install maui-android`
-- Android SDK e um emulador Android (Visual Studio 2022 ou Android Studio)
+### Opção 1 — Visual Studio 2026 (recomendado)
 
-**Passos**
+1. Instale o [Visual Studio 2026 Community](https://visualstudio.microsoft.com/) com a carga de trabalho
+   **"Desenvolvimento de interface do usuário de aplicativo multiplataforma do .NET"** (.NET MAUI).
+   Ela já instala o .NET SDK, o Android SDK e o emulador.
+2. Clone o repositório (ou baixe o ZIP pelo botão **Code → Download ZIP** e descompacte):
+   ```bash
+   git clone https://github.com/xeresgor/EasyShop.git
+   ```
+3. Abra o arquivo **`EasyShop.sln`** com duplo clique.
+4. Na primeira vez, crie um emulador em **Ferramentas → Android → Gerenciador de Dispositivos Android**
+   (qualquer Pixel com Android 14 ou superior).
+5. Escolha o emulador na barra de cima e pressione **F5**.
+
+> A primeira compilação demora alguns minutos (o Visual Studio baixa os pacotes NuGet). As seguintes são rápidas.
+
+### Opção 2 — linha de comando
+
+Pré-requisitos: .NET SDK 10 ou superior, workload do MAUI (`dotnet workload install maui-android`) e um
+emulador Android já aberto.
+
 ```bash
 git clone https://github.com/xeresgor/EasyShop.git
 cd EasyShop
-dotnet restore
 dotnet build -t:Run -f net10.0-android
 ```
-Com o emulador já iniciado. No Visual Studio: selecione o emulador e pressione **F5**.
+
+### Problemas comuns
+
+| Sintoma | Solução |
+|---|---|
+| O emulador não inicia ou fica lento | Ligar a virtualização na BIOS e o recurso do Windows **"Plataforma do Hipervisor do Windows"** (pede reiniciar o PC) |
+| Erro `XA0129` ao implantar | Rodar de novo com `-p:EmbedAssembliesIntoApk=true` ou desinstalar o app do emulador |
+| Visual Studio 2022 não abre o projeto | O projeto é .NET 10: use o Visual Studio 2026 |
 
 ### Onde ficam os dados no aparelho
 
