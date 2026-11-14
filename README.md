@@ -129,4 +129,4 @@ Para provar a persistência: cadastre clientes e produtos, feche o app por compl
 
 ## 🎥 Vídeo de demonstração
 
-[Link do vídeo (YouTube ou Google Drive)](COLE_O_LINK_AQUI)
+https://youtu.be/fFVeMDFTB14
